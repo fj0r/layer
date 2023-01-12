@@ -170,8 +170,7 @@ RUN set -eux \
   \
   ; mkdir -p ${XDG_CONFIG_HOME} \
   ; git clone --depth=1 https://github.com/fj0r/nvim-lua.git $XDG_CONFIG_HOME/nvim \
-  ; git clone --depth=1 https://github.com/wbthomason/packer.nvim $XDG_CONFIG_HOME/nvim/pack/packer/start/packer.nvim \
-  ; nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' \
+  ; nvim --headless "+Lazy! sync" +qa \
   \
   ; tsl=$(cat $XDG_CONFIG_HOME/nvim/lua/lang/treesitter_lang.json|jq -r 'join(" ")') \
   ; nvim --headless -c "TSUpdateSync ${tsl}" -c 'quit' \
